@@ -4,6 +4,8 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const logger = require('morgan');
+//const app = express();
+const port = process.env.PORT || 5000;
 
 const indexRouter = require('./routes/indexRouter');
 const librosRouter = require('./routes/librosRouter');
@@ -27,9 +29,8 @@ app.use('/', indexRouter);
 app.use('/libros', librosRouter);
 //app.use('/usuarios', usuariosRouter);
 
-/* // catch 404 and forward to error handler
-app.use(function (req, res, next) {
-  next(createError(404));
+app.listen(port, () => {
+  console.log(`SERVER corriendo en http://localhost:${port}`);
 });
 
 // error handler
@@ -41,6 +42,6 @@ app.use(function (err, req, res, next) {
   // render the error page
   res.status(err.status || 500);
   res.render('./layouts/error');
-}); */
+});
 
 module.exports = app;

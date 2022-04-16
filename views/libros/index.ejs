@@ -24,15 +24,8 @@
                         <%= libros[i].imagen %>
                     </td>
                     <td>
-                        <div class="btn-group" role="group" aria-label="Basic example">
-                            <form method="post" action="/libros/editar/<%= libros[i].id %>">
-                                <button type="submit" class="btn btn-sm btn-warning">Modificar</button>
-                            </form>
-                            -
-                            <form method="post" action="/libros/eliminar/<%= libros[i].id %>">
-                                <button type="submit" class="btn btn-sm btn-danger">Eliminar</button>
-                            </form>
-                        </div>
+                        <a href="libros/editar/<%=libros[i].id %>" class="btn btn-sm btn-warning">EDITAR</a> -
+                        <a href="libros/eliminar/<%=libros[i].id %>" class="btn btn-sm btn-danger">ELIMINAR</a>
                     </td>
                 </tr>
                 <% } %>
@@ -40,6 +33,7 @@
     </table>
     <br>
     <a href="libros/agregar" type="button" class="btn btn-primary">Agregar Libro</a>
+
 
 
     <%- include("../layouts/footer.ejs") %>

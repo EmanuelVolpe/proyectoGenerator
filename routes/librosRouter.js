@@ -2,9 +2,11 @@ const express = require('express');
 const router = express.Router();
 const librosController = require('../controllers/librosController');
 
-/* GET home page. */
+router.post('/guardar', librosController.guardar);
+router.post('/update', librosController.update);
 router.get('/', librosController.index);
 router.get('/agregar', librosController.agregar);
-router.post('/', librosController.guardar)
+router.get('/eliminar/:id', librosController.delete);
+router.get('/editar/:id', librosController.editar);
 
 module.exports = router;

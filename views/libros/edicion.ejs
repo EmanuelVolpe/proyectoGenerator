@@ -1,0 +1,30 @@
+<%- include("../layouts/header.ejs") %>
+
+    <br>
+    <div class="card text-white bg-danger">
+        <div class=" card-header">
+            <%= mensaje %>
+        </div>
+        <% if (libro) { %>
+            <div class="card-body">
+                <form method="POST" action="../update">
+                    <input id="id" name="id" value="<%= libro.id %>" hidden>
+                    <div class="form-group">
+                        <label for="formGroupExampleInput">Nombre</label>
+                        <input type="text" class="form-control" id="formGroupExampleInput" name="nombre"
+                            value="<%= libro.nombre  %>">
+                    </div>
+                    <div class="form-group">
+                        <label for="formGroupExampleInput2">Imagen</label>
+                        <input type="file" class="form-control" id="formGroupExampleInput2" name="imagen"
+                            value="<%= libro.imagen  %>">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Enviar</button>
+                </form>
+            </div>
+            <% } %>
+    </div>
+    <br>
+    <a href="/libros" type="button" class="btn btn-primary">Volver</a>
+
+    <%- include("../layouts/footer.ejs") %>
