@@ -4,12 +4,16 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const logger = require('morgan');
-//const app = express();
-const port = process.env.PORT || 5000;
 
-const indexRouter = require('./routes/indexRouter');
+const bcryptjs = require('bcryptjs')
+
+// NO OLVIDARSE SI VOY A USAR ARCHIVOS DE ENTORNOS.ENV
+const dotenv = require('dotenv')
+dotenv.config({ path: './.env' })
+const port = process.env.PORT || 8000;
+
+//const usuariosRouter = require('./routes/usuariosRouter');
 const librosRouter = require('./routes/librosRouter');
-//const usuariosRouter = require('./routes/usuarios');
 
 const app = express();
 
@@ -25,23 +29,24 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json())
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
+//app.use('/', usuariosRouter);
 app.use('/libros', librosRouter);
-//app.use('/usuarios', usuariosRouter);
+
+const conn = require('./connection/connection')
+
+// VARIABLES DE SESION
+/* const session = require('express-session')
+app.use(session({
+  secret: 'secret',
+  resave: true,
+  saveUninitialized: true
+})) */
+
+/* app.get('/', (req, res) => {
+  res.render('index')
+}) */
 
 app.listen(port, () => {
   console.log(`SERVER corriendo en http://localhost:${port}`);
 });
 
-// error handler
-app.use(function (err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
-
-  // render the error page
-  res.status(err.status || 500);
-  res.render('./layouts/error');
-});
-
-module.exports = app;

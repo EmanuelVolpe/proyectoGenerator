@@ -20,7 +20,7 @@ module.exports = {
 
     editar: (req, res) => {
         const id = req.params.id;
-        conn.query('SELECT * FROM libros WHERE id=?', id, (error, results) => {
+        librosModel.editar(conn, id, (error, results) => {
             if (error) {
                 throw error;
             } else {
@@ -31,7 +31,7 @@ module.exports = {
                     libro: results[0]
                 });
             }
-        });
+        })
     },
 
     update: (req, res) => {
