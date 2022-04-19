@@ -5,14 +5,13 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const logger = require('morgan');
 
-const bcryptjs = require('bcryptjs')
 
 // NO OLVIDARSE SI VOY A USAR ARCHIVOS DE ENTORNOS.ENV
 const dotenv = require('dotenv')
 dotenv.config({ path: './.env' })
 const port = process.env.PORT || 8000;
 
-//const usuariosRouter = require('./routes/usuariosRouter');
+const usuariosRouter = require('./routes/usuariosRouter');
 const librosRouter = require('./routes/librosRouter');
 
 const app = express();
@@ -29,8 +28,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json())
 app.use(express.static(path.join(__dirname, 'public')));
 
-//app.use('/', usuariosRouter);
 app.use('/libros', librosRouter);
+app.use('/usuarios', usuariosRouter);
 
 const conn = require('./connection/connection')
 
@@ -42,9 +41,6 @@ app.use(session({
   saveUninitialized: true
 })) */
 
-/* app.get('/', (req, res) => {
-  res.render('index')
-}) */
 
 app.listen(port, () => {
   console.log(`SERVER corriendo en http://localhost:${port}`);
