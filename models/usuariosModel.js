@@ -2,8 +2,8 @@ module.exports = {
     agregar: function (conexion, datos, funcion) {
         conexion.query('INSERT INTO usuarios SET ?', { usuario: datos.usuario, pass: datos.pass }, funcion)
     },
-    verificar: function (conexion, datos, funcion) {
-        conexion.query('SELECT * FROM usuarios WHERE id = ?', datos, funcion)
+    autentificar: function (conexion, datos, funcion) {
+        conexion.query('SELECT * FROM usuarios WHERE usuario = ?', datos, funcion)
     }
 
     /*

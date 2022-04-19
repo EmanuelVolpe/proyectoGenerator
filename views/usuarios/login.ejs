@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
         integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <title>LOGIN</title>
 </head>
 
@@ -21,18 +22,18 @@
                 <h3>Iniciar sesión </h3>
             </div>
             <div class="card-body w-100">
-                <form name="login" action="verificar" method="post">
+                <form action="./usuarios/autentificar" method="POST">
                     <div class="input-group form-group mt-3">
                         <div class="bg-secondary rounded-start">
                             <span class="m-3"><i class="fas fa-user mt-2"></i></span>
                         </div>
-                        <input type="text" class="form-control" placeholder="Usuario" name="usuario" required>
+                        <input type="text" class="form-control" placeholder="Usuario" name="usuario">
                     </div>
                     <div class="input-group form-group mt-3">
                         <div class="bg-secondary rounded-start">
                             <span class="m-3"><i class="fas fa-key mt-2"></i></span>
                         </div>
-                        <input type="password" class="form-control" placeholder="Contraseña" name="pass" required>
+                        <input type="password" class="form-control" placeholder="Contraseña" name="pass">
                     </div>
 
                     <div class="form-group mt-3">
@@ -45,6 +46,22 @@
                 </form>
             </div>
         </div>
+    </div>
+    <div>
+        <% if (typeof alert !='undefined' ) { %>
+            <script>
+                Swal.fire({
+                    alert: true,
+                    title: '<%= alertTitle %>',
+                    text: '<%= alertMessage %>',
+                    icon: '<%= alertIcon %>',
+                    showConfirmButton: '<%= showConfirmButton %>',
+                    timer: '<%= timer %>'
+                }).then(() => {
+                    window.location = '/<%= ruta %>'
+                })
+            </script>
+            <% } %>
     </div>
 
 </body>

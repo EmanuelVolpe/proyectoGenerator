@@ -5,6 +5,6 @@ const usuariosController = require('../controllers/usuariosController');
 router.get('/', usuariosController.index);
 router.get('/registro', usuariosController.registro);
 router.post('/agregar', usuariosController.agregar);
-//router.post('verificar', usuariosController, verificar);
+router.post('/autentificar', usuariosController.autentificar);
 
 module.exports = router;
