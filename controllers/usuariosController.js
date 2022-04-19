@@ -50,7 +50,7 @@ module.exports = {
                         ruta: 'usuarios'
                     })
                 } else {
-                    console.log(pass, results[0].pass)
+                    //console.log(pass, results[0].pass)
                     res.render('usuarios/login', {
                         alert: true,
                         alertTitle: 'EXITO',
