@@ -7,9 +7,11 @@ module.exports = {
     index: function (req, res) {
         res.render('usuarios/login')
     },
+
     registro: function (req, res) {
         res.render('usuarios/registro')
     },
+
     agregar: async function (req, res) {
         const usuario = req.body.usuario;
         const pass = req.body.pass;
@@ -30,6 +32,7 @@ module.exports = {
             }
         })
     },
+
     autentificar: async function (req, res) {
         const usuario = req.body.usuario;
         const pass = req.body.pass;
@@ -50,7 +53,6 @@ module.exports = {
                         ruta: 'usuarios'
                     })
                 } else {
-                    //console.log(pass, results[0].pass)
                     res.render('usuarios/login', {
                         alert: true,
                         alertTitle: 'EXITO',
